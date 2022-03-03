@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -12,14 +13,9 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DeleteIcon from "@mui/icons-material/Delete";
 import PanelList from './component/PanelList/PanelList';
 
+import './App.css';
 
 function App() {
  
@@ -54,7 +50,8 @@ function App() {
   const [maxWidth] = useState("sm");
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
-  const [itemAddedFromChild, setIsFromChild] = useState(false);
+
+  const baseClass = "accordion-example";
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -73,16 +70,10 @@ function App() {
   };
 
   const handleAddItem = () => {
-    if(itemAddedFromChild)
-    {
-      // const updatedList = data[index]
-    }
-    else
-    {
-      const updatedList = [...data, { title: title, description: value}];
-      setData(updatedList);
-    }
- 
+   
+    const updatedList = [...data, { title: title, description: value}];
+    
+    setData(updatedList);
     setOpen(false);
     setTitle("");
     setValue("");
@@ -139,8 +130,6 @@ function App() {
 
 
 const handleChildAddAction = (item,index) => {
-  setIsFromChild(true)
-  handleClickOpen();
   
 }
 
@@ -152,12 +141,11 @@ const handleChildRemoveAction = (item,index) => {
 
   
   return(
-    <div style={{padding: '20px'}}>
+    <div className={`${baseClass}-container`}>
       <ButtonGroup variant="outlined" >
           <Button onClick={handleClickOpen} >Add Item</Button>
           <Button onClick={handleDeleteAction}>Delete</Button>
       </ButtonGroup>
-     
       {AddItem}
       <PanelList 
       data={data} 

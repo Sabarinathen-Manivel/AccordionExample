@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {array, func } from 'prop-types';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import DeleteIcon from "@mui/icons-material/Delete";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 
 export const PanelList = (props) => {
@@ -43,11 +44,11 @@ export const PanelList = (props) => {
    };
 
   return(
-    <div>
+    <>
       {
         props.data.map((item,index) => renderList(item,index))
       }
-    </div>
+    </>
   )
 }
 
